@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Siaga Mandatama Karya | <%= title %> </title>
+    <link rel="shortcut icon" href="/image/logo/logo.png" type="image/png">
+    <%- include('../styling') %> 
+</head>
+<body>
+    <%- include('../partials/header') %> 
+    <div class="container-fluid">
+        <div class="row">
+            <%- include('../partials/sidebar') %> 
+
+            <!-- MAIN -->
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                  <h1 class="h2"><%= title %></h1>
+                  <div class="btn-toolbar mb-2 mb-md-0">
+                    <a href="/karyawan" class="btn btn-sm btn-outline-danger">
+                      <span data-feather="chevron-left"></span>
+                      Kembali
+                    </a>
+                  </div>
+                </div>
+          
+                <form>
+                    <input type="hidden" value="<%= data.id_users %>" class="form-control" id="id_users">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="mb-3">
+                                <label for="nama_karyawan" class="form-label">Nama Karyawan</label>
+                                <input type="text" value="<%= data.nama_user %>" class="form-control" id="nama_karyawan" placeholder="nama karyawan">
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="mb-3">
+                                <label for="email_karyawan" class="form-label">Email Karyawan</label>
+                                <input type="email" value="<%= data.email_user %>" class="form-control" id="email_karyawan" placeholder="email karyawan">
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="mb-3">
+                                <label for="nohp_karyawan" class="form-label">No Handphone</label>
+                                <input type="number" value="<%= data.nohp_user %>" class="form-control" id="nohp_karyawan" placeholder="no hp">
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="mb-3">
+                                <label for="password_karyawan" class="form-label">Password</label>
+                                <input type="password" class="form-control" id="password_karyawan" placeholder="password">
+                                <small class="text-secondary">Isi password jika ingin diubah</small>
+                            </div>
+                            <button class="btn btn-primary" type="button" onclick="updateKaryawan()" id="update_btn_karyawan">Ubah</button>
+                        </div>
+                    </div>
+                </form>
+            </main>
+        </div>
+    </div>
+
+    <%- include('../scripting') %> 
+</body>
+</html>

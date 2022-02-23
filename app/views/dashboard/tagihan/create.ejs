@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Siaga Mandatama Karya | <%= title %> </title>
+    <link rel="shortcut icon" href="/image/logo/logo.png" type="image/png">
+    <%- include('../styling') %> 
+</head>
+<body>
+    <%- include('../partials/header') %> 
+    <div class="container-fluid">
+        <div class="row">
+            <%- include('../partials/sidebar') %> 
+
+            <!-- MAIN -->
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                  <h1 class="h2"><%= title %></h1>
+                  <div class="btn-toolbar mb-2 mb-md-0">
+                    <a href="/pelanggan" class="btn btn-sm btn-outline-danger">
+                      <span data-feather="chevron-left"></span>
+                      Kembali
+                    </a>
+                  </div>
+                </div>
+          
+                <form>
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <div class="mb-3">
+                                <label for="id_survey" class="form-label">Nomor Order</label>
+                                <select class="form-select select2-form" id="id_survey" aria-label="Default select example">
+                                <option value="" selected>Pilih Nomor Order</option>
+                                    <% data.forEach(element => { %>
+                                    <option value="<%= element.id_survey %> "><%= element.pemesanan.no_order %></option>
+                                    <% }) %>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="mb-3">
+                                <label for="total_tagihan" class="form-label">Total Tagihan</label>
+                                <div class="input-group has-validation">
+                                    <span class="input-group-text" id="inputGroupPrepend3">Rp</span>
+                                    <input type="number" class="form-control" id="total_tagihan" placeholder="total tagihan">
+                                </div>
+                            </div>
+                            <button class="btn btn-primary" type="button" onclick="createTagihan()" id="create_btn_tagihan">Submit</button>
+                        </div>
+                    </div>
+                </form>
+            </main>
+        </div>
+    </div>
+
+    <%- include('../scripting') %> 
+</body>
+</html>

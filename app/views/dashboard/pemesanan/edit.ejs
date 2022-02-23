@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Siaga Mandatama Karya | <%= title %> </title>
+    <link rel="shortcut icon" href="/image/logo/logo.png" type="image/png">
+    <%- include('../styling') %> 
+</head>
+<body>
+    <%- include('../partials/header') %> 
+    <div class="container-fluid">
+        <div class="row">
+            <%- include('../partials/sidebar') %> 
+
+            <!-- MAIN -->
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                  <h1 class="h2"><%= title %></h1>
+                  <div class="btn-toolbar mb-2 mb-md-0">
+                    <a href="/pemesanan" class="btn btn-sm btn-outline-danger">
+                      <span data-feather="chevron-left"></span>
+                      Kembali
+                    </a>
+                  </div>
+                </div>
+          
+                <form>
+                    <input type="hidden" value="<%= data.id_pemesanan %>" class="form-control" id="id_pemesanan">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <h5><%= data.no_order %> </h5>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="mb-3">
+                                <label for="id_pelanggan" class="form-label">Pelanggan</label>
+                                <select class="form-select select2-form" id="id_pelanggan" aria-label="Default select example">
+                                    <option value="" selected>Pilih Pelanggan</option>
+                                    <% pelanggan.forEach(element => { %>
+                                        <option value="<%= element.id_pelanggan %> " <%= element.id_pelanggan == data.id_pelanggan && 'selected' %> ><%= element.nama_pelanggan %> - <%= element.alamat_pelanggan %></option>
+                                    <% }) %>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="mb-3">
+                                <label for="tgl_pemesanan" class="form-label">Tanggal Pemesanan</label>
+                                <input type="date" value="<%= moment(data.tgl_pemesanan).format('YYYY-MM-DD') %>" class="form-control" id="tgl_pemesanan">
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="mb-4">
+                                <label for="waktu_pemesanan" class="form-label">Waktu Pemesanan</label>
+                                <input type="text" value="<%= moment(data.tgl_pemesanan).format('HH:mm') %>" class="form-control timepicker" id="waktu_pemesanan">
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="mb-3">
+                                <label for="deskripsi_pemesanan" class="form-label">Deskripsi Pemesanan</label>
+                                <textarea class="form-control" id="deskripsi_pemesanan" rows="3"><%= data.deskripsi_pemesanan %></textarea>
+                            </div>
+                            <button class="btn btn-primary" type="button" onclick="updatePemesanan()" id="update_btn_pemesanan">Ubah</button>
+                        </div>
+                    </div>
+                </form>
+            </main>
+        </div>
+    </div>
+
+    <%- include('../scripting') %> 
+</body>
+</html>

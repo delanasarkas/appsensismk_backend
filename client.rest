@@ -1,0 +1,39 @@
+POST http://localhost:8080/api/auth/login
+content-type: application/json
+
+{
+    "email": "test@gmail.com",
+    "password": "testuser123"
+}
+
+###
+
+POST http://localhost:8080/api/auth/register
+content-type: application/json
+
+{
+    "email_karyawan": "hrdsmk@gmail.com",
+    "nama_karyawan": "hrdsmk",
+    "nohp_karyawan": "081029182719",
+    "password_karyawan": "hrdsmk123"
+}
+
+###
+
+GET http://localhost:8080/api/client/absensi-today/85b09f87-ed55-4147-9cdb-26bc22d21993
+
+###
+
+GET http://localhost:8080/api/client/statistik/85b09f87-ed55-4147-9cdb-26bc22d21993
+
+###
+
+GET http://localhost:8080/api/client/survey-all/85b09f87-ed55-4147-9cdb-26bc22d21993
+
+###
+
+GET http://localhost:8080/api/client/check-absensi/85b09f87-ed55-4147-9cdb-26bc22d21993
+
+###
+
+GET http://localhost:8080/api/client/detail-survey/9c9a4fab-67b8-4e31-b85e-4d97950c1742

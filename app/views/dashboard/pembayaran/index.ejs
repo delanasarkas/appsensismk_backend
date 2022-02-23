@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Siaga Mandatama Karya | <%= title %> </title>
+    <link rel="shortcut icon" href="/image/logo/logo.png" type="image/png">
+    <%- include('../styling') %> 
+</head>
+<body>
+    <%- include('../partials/header') %> 
+    <div class="container-fluid">
+        <div class="row">
+            <%- include('../partials/sidebar') %> 
+
+            <!-- MAIN -->
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                  <h1 class="h2"><%= title %></h1>
+                  <div class="btn-toolbar mb-2 mb-md-0">
+                    <a href="/pembayaran/tambah" class="btn btn-sm btn-outline-secondary">
+                      <span data-feather="plus"></span>
+                      Tambah <%= title %> 
+                    </a>
+                  </div>
+                </div>
+          
+                <div class="table-responsive">
+                    <table class="table table-striped table-sm" id="table_pelanggan">
+                      <thead>
+                        <tr>
+                          <th scope="col">No Order</th>
+                          <th scope="col">Jenis Pembayaran</th>
+                          <th scope="col">Total Tagihan</th>
+                          <!-- <th scope="col">Aksi</th> -->
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <% data.forEach(element => { %>                         
+                          <tr>
+                            <td class="align-center"><%= element.tagihan.survey.pemesanan.no_order %></td>
+                            <td><%= element.jenis_pembayaran %></td>
+                            <td>Rp <%= element.tagihan.total_tagihan.toLocaleString() %></td>
+                            <!-- <td>
+                              <button class="btn btn-danger btn-sm" type="button" onclick="deletePembayaran('<%= element.id_pembayaran %>')">Hapus</button>
+                            </td> -->
+                          </tr>
+                        <% }) %>
+                      </tbody>
+                    </table>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <%- include('../scripting') %> 
+</body>
+</html>
